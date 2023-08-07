@@ -1,0 +1,13 @@
+-   name: app
+    type: golang:1.20
+    web:
+        upstream:
+            protocol: http
+        commands:
+            start: "/app/server -bearer=\"la vie en rose\" -listen=0.0.0.0:$PORT"
+        locations:
+            /:
+                root: "public"
+                passthru: true
+                request_buffering:
+                    enabled: false
